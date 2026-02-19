@@ -599,7 +599,7 @@ if(enterBtn){
 }
 
 /* SOUND */
-const tick = new Audio("/Users/sejin/Documents/Parsons/interaction stu/project1/tick.wav"); // ✅ relative path
+const tick = new Audio("tick.wav"); // ✅ relative path
 tick.loop = true;
 tick.volume = 0.35;
 
