@@ -1,0 +1,122 @@
+<!-- index.html (FULL) -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>The Book of Sand (1975)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HUD -->
+  <header class="hud">
+    <div class="title">
+      The Book of Sand <span class="year">(1975)</span>
+    </div>
+    <a class="backLink" href="/Users/sejin/Documents/Parsons/interaction stu/project1/page1/index.html">
+      ← back to the tunnel
+    </a>
+  </header>
+
+  <!-- Stage -->
+  <main class="stage">
+    <div class="bg"></div>
+    <div class="vignette"></div>
+
+    <!-- Clock Nav -->
+    <nav class="clock" aria-label="Clock navigation">
+
+  <!-- I (top center) -->
+  <button class="tick" data-action="shuffle" style="--x:50%; --y:14%;">
+    <span class="float" style="--d:22s; --fx:18px; --fy:-26px; animation-delay:-6.2s;">
+      <span class="roman">I</span>
+      <span class="sub">shuffle</span>
+    </span>
+  </button>
+
+  <!-- RIGHT -->
+  <button class="tick" data-i="0" style="--x:72%; --y:22%;">
+    <span class="float" style="--d:18s; --fx:16px; --fy:-22px; animation-delay:-3.7s;">
+      <span class="roman">II</span>
+    </span>
+  </button>
+
+  <button class="tick" data-i="1" style="--x:88%; --y:34%;">
+    <span class="float" style="--d:23s; --fx:22px; --fy:-18px; animation-delay:-10.4s;">
+      <span class="roman">III</span>
+    </span>
+  </button>
+
+  <button class="tick" data-i="2" style="--x:94%; --y:52%;">
+    <span class="float" style="--d:19s; --fx:14px; --fy:-28px; animation-delay:-5.1s;">
+      <span class="roman">IV</span>
+    </span>
+  </button>
+
+  <button class="tick" data-i="3" style="--x:86%; --y:70%;">
+    <span class="float" style="--d:24s; --fx:20px; --fy:-24px; animation-delay:-12.9s;">
+      <span class="roman">V</span>
+    </span>
+  </button>
+
+  <button class="tick" data-i="4" style="--x:70%; --y:84%;">
+    <span class="float" style="--d:20s; --fx:18px; --fy:-30px; animation-delay:-8.0s;">
+      <span class="roman">VI</span>
+    </span>
+  </button>
+
+  <!-- VII (bottom center) -->
+  <button class="tick" data-action="loop" id="loopBtn" style="--x:50%; --y:94%;">
+    <span class="float" style="--d:22s; --fx:16px; --fy:-18px; animation-delay:-9.6s;">
+      <span class="roman">VII</span>
+      <span class="sub">loop</span>
+    </span>
+  </button>
+
+  <!-- LEFT (mirror) -->
+  <button class="tick" data-i="5" style="--x:30%; --y:84%;">
+    <span class="float" style="--d:18s; --fx:18px; --fy:-30px; animation-delay:-2.9s;">
+      <span class="roman">VIII</span>
+    </span>
+  </button>
+
+  <button class="tick" data-i="6" style="--x:14%; --y:70%;">
+    <span class="float" style="--d:25s; --fx:20px; --fy:-24px; animation-delay:-14.3s;">
+      <span class="roman">IX</span>
+    </span>
+  </button>
+
+  <button class="tick" data-i="7" style="--x:6%; --y:52%;">
+    <span class="float" style="--d:16s; --fx:14px; --fy:-28px; animation-delay:-6.8s;">
+      <span class="roman">X</span>
+    </span>
+  </button>
+
+  <button class="tick" data-i="8" style="--x:12%; --y:34%;">
+    <span class="float" style="--d:22s; --fx:22px; --fy:-18px; animation-delay:-11.1s;">
+      <span class="roman">XI</span>
+    </span>
+  </button>
+
+  <button class="tick" data-i="9" style="--x:28%; --y:22%;">
+    <span class="float" style="--d:17s; --fx:16px; --fy:-22px; animation-delay:-4.4s;">
+      <span class="roman">XII</span>
+    </span>
+  </button>
+
+</nav>
+
+
+   
+
+    <!-- FULLSCREEN TEXT CANVAS -->
+    <canvas id="page"></canvas>
+
+    <!-- page number -->
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

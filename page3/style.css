@@ -1,0 +1,302 @@
+/* =========================
+   style.css (FULL) — Refactor to "HUD Component + Theme Variables"
+   ========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&display=swap');
+
+/* =========================
+   THEME TOKENS (Page-level)
+   ========================= */
+:root{
+  /* global */
+  --bg: #0b0a08;
+
+  /* ink family (used across page) */
+  --fg: rgba(177, 146, 113, 0.92);
+  --ink: rgba(255, 245, 230, 0.78);
+  --ink-strong: rgba(232, 229, 213, 0.92);
+  --ink-muted: rgba(255, 245, 230, 0.52);
+
+  /* HUD tokens (shared component) */
+  --hud-title-color: var(--ink-strong);
+  --hud-link-color: var(--ink-muted);
+  --hud-link-hover: var(--ink);
+  --hud-underline: rgba(255, 245, 230, 0.25);
+  --hud-glow: rgba(255, 245, 230, 0.22);
+
+  /* common shadows */
+  --shadow-deep: rgba(255, 245, 230, 0.65);
+  --shadow-soft: rgba(255, 245, 230, 0.60);
+
+  /* clock glow */
+  --clock-glow-soft: rgba(255, 245, 230, 0.78);
+  --clock-glow-warm: rgba(255, 240, 200, 0.14);
+}
+
+/* =========================
+   BASE
+   ========================= */
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  color: var(--fg);
+  font-family: "EB Garamond", Garamond, Georgia, serif;
+  overflow:hidden;
+  background: var(--bg);
+}
+
+/* =========================
+   HUD COMPONENT (shared)
+   ========================= */
+.hud{
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 30;
+  user-select:none;
+  mix-blend-mode: screen;
+}
+
+.title{
+  font-family: "EB Garamond", Garamond, Georgia, serif;
+  font-weight: 400;
+  font-size: 34px;
+  letter-spacing: .02em;
+  line-height: 1.05;
+  color: var(--hud-title-color);
+
+  text-shadow:
+    0 12px 55px var(--shadow-deep),
+    0 0 22px var(--hud-glow);
+}
+
+.title .year{
+  font-size: 18px;
+  opacity: .72;
+  margin-left: 6px;
+  font-weight: 400;
+  color: var(--hud-title-color);
+}
+
+/* back link (no blue/purple ever) */
+.backLink,
+.backLink:link,
+.backLink:visited,
+.backLink:active{
+  display:inline-block;
+  margin-top: 10px;
+  font-size: 18px;
+  letter-spacing: .02em;
+  color: var(--hud-link-color);
+  text-decoration: none;
+  border-bottom: 1px solid var(--hud-underline);
+  padding-bottom: 2px;
+
+  text-shadow:
+    0 10px 45px var(--shadow-soft),
+    0 0 14px rgba(255,235,200,0.14);
+}
+
+.backLink:hover{
+  color: var(--hud-link-hover);
+  border-bottom-color: rgba(255,255,255,.45);
+}
+
+/* =========================
+   SCENE
+   ========================= */
+.stage{
+  position: relative;
+  height:100%;
+  width:100%;
+}
+
+/* background */
+.bg{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background-image: url("https://i.pinimg.com/originals/a3/57/af/a357affe6db74efa3df0bd3ad6b3e158.gif");
+  background-size: cover;
+  background-position: center;
+  filter: contrast(1.05) saturate(0.95);
+  opacity: .95;
+  transform: scale(1.03);
+}
+
+/* vignette */
+.vignette{
+  position:absolute;
+  inset:-19%;
+  z-index:1;
+  background:
+    radial-gradient(60% 60% at 50% 45%,
+      rgba(190,120,60,.18) 0%,
+      rgba(0,0,0,.0) 38%,
+      rgba(0,0,0,.65) 72%,
+      rgba(0,0,0,.88) 100%),
+    radial-gradient(90% 90% at 50% 50%,
+      rgba(0,0,0,.0) 0%,
+      rgba(0,0,0,.75) 70%,
+      rgba(0,0,0,.95) 100%);
+  pointer-events:none;
+  filter: saturate(0.95) contrast(1.05);
+}
+
+/* FULLSCREEN canvas */
+#page{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index: 5;
+  pointer-events:none;
+}
+
+/* page number */
+.folio{
+  position: fixed;
+  right: 22px;
+  bottom: 18px;
+  z-index: 20;
+  font-size: 14px;
+  letter-spacing: .10em;
+  color: var(--ink-muted);
+  user-select:none;
+  text-shadow:
+    0 10px 45px var(--shadow-soft),
+    0 0 14px rgba(255,235,200,0.14);
+  mix-blend-mode: screen;
+}
+
+/* =========================
+   CLOCK NAV
+   ========================= */
+.clock{
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  pointer-events: none;
+  font-family: "EB Garamond", Garamond, Georgia, serif;
+}
+
+.tick{
+    font-family: "EB Garamond", Garamond, Georgia, serif;
+  pointer-events: auto;
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* float wrapper */
+.float{
+  display:inline-block;
+  color: var(--ink);
+  opacity: .82;
+  text-shadow:
+    0 14px 60px rgba(0,0,0,0.70),
+    0 0 18px var(--clock-glow-soft),
+    0 0 46px var(--clock-glow-warm);
+
+  animation: floatTick var(--d, 18s) linear infinite;
+  will-change: transform;
+  filter: drop-shadow(0 0 10px rgba(255, 245, 230,));
+}
+
+/* ellipse drift */
+@keyframes floatTick{
+  0%{
+    transform: translate(0px, 0px) rotate(-0.6deg) scale(1);
+  }
+  20%{
+    transform:
+      translate(calc(var(--fx, 16px) * 0.85),
+                calc(var(--fy, -22px) * 0.35))
+      rotate(0.5deg)
+      scale(1.02);
+  }
+  45%{
+    transform:
+      translate(calc(var(--fx, 16px) * 0.35),
+                var(--fy, -22px))
+      rotate(-0.9deg)
+      scale(1.03);
+  }
+  70%{
+    transform:
+      translate(calc(var(--fx, 16px) * -0.70),
+                calc(var(--fy, -22px) * 0.55))
+      rotate(0.7deg)
+      scale(1.02);
+  }
+  100%{
+    transform: translate(0px, 0px) rotate(-0.6deg) scale(1);
+  }
+}
+
+.roman{
+  display:block;
+  font-family: "EB Garamond", Garamond, Georgia, serif;
+  font-size: 26px;
+  letter-spacing: .02em;
+  line-height: 1;
+  transition: transform .18s ease, opacity .18s ease, text-shadow .18s ease, color .18s ease;
+  transform: translateZ(0);
+}
+
+.sub{
+  display:block;
+  margin-top: 6px;
+  font-size: 14px;
+  letter-spacing: .10em;
+  opacity: .55;
+  text-transform: lowercase;
+  transition: transform .18s ease, opacity .18s ease;
+}
+
+/* hover glow */
+.tick:hover .float{
+  color: var(--ink-strong);
+  opacity: 1;
+  text-shadow:
+    0 16px 70px rgba(0,0,0,0.75),
+    0 0 26px rgba(61, 45, 31, 0.5),
+    0 0 70px rgba(69, 53, 36, 0.28);
+  filter: drop-shadow(0 0 14px rgba(255,240,200,.22));
+}
+
+.tick:hover .roman{ transform: scale(1.30); }
+.tick:hover .sub{ transform: scale(1.10); opacity: .88; }
+.tick:active .roman{ transform: scale(1.16); }
+
+/* loop on */
+.tick.isOn .float{
+  color: rgba(61, 52, 38, 0.96);
+  opacity: 1;
+  text-shadow:
+    0 16px 70px rgba(0,0,0,0.75),
+    0 0 34px rgba(77, 62, 44, 0.62),
+    0 0 90px rgba(76, 60, 41, 0.34);
+}
+.tick.isOn .sub{ opacity: .92; }
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 700px){
+  .title{ font-size: 24px; }
+  .title .year{ font-size: 16px; }
+  .backLink{ font-size: 16px; }
+
+  .roman{ font-size: 34px; }
+  .sub{ font-size: 12px; }
+}
