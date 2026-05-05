@@ -3,34 +3,137 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>
-    The Circular Ruins</title>
+  <title>The Circular Ruins</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    
-  <!-- background layers -->
   <div class="bg" aria-hidden="true"></div>
   <div class="vignette" aria-hidden="true"></div>
+  <div class="floatingLetters" aria-hidden="true"></div>
 
-  <!-- canvas -->
-  <canvas id="c"></canvas>
-
-  <!-- HUD -->
   <header class="hud">
     <div class="title">
       The Circular Ruins <span class="year">(1940)</span>
     </div>
-
     <a class="backLink" href="../page1/index.html">← back to the tunnel</a>
-
-    <div class="right">
-      <button class="pill" id="clear">clear</button>
-      <button class="pill" id="shuffle">shuffle</button>
-      <button class="pill" id="auto">auto drift: on</button>
-    </div>
   </header>
+
+  <main class="content">
+    <section class="type-field">
+
+      <svg class="text-map" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <path id="outer1" d="M500,500 m-500,0 a500,500 0 1,1 1000,0 a500,500 0 1,1 -1000,0" />
+          <path id="outer2" d="M500,500 m-455,0 a455,455 0 1,1 910,0 a455,455 0 1,1 -910,0" />
+          <path id="outer3" d="M500,500 m-410,0 a410,410 0 1,1 820,0 a410,410 0 1,1 -820,0" />
+
+          <path id="ring1" d="M500,500 m-350,0 a350,350 0 1,1 700,0 a350,350 0 1,1 -700,0" />
+          <path id="ring2" d="M500,500 m-285,0 a285,285 0 1,1 570,0 a285,285 0 1,1 -570,0" />
+          <path id="ring3" d="M500,500 m-220,0 a220,220 0 1,1 440,0 a220,220 0 1,1 -440,0" />
+          <path id="ring4" d="M500,500 m-160,0 a160,160 0 1,1 320,0 a160,160 0 1,1 -320,0" />
+          <path id="ring5" d="M500,500 m-105,0 a105,105 0 1,1 210,0 a105,105 0 1,1 -210,0" />
+          <path id="ring6" d="M500,500 m-70,0 a70,70 0 1,1 140,0 a70,70 0 1,1 -140,0" />
+        </defs>
+
+        <g class="ghost-rings" aria-hidden="true">
+          <circle cx="500" cy="500" r="430" />
+          <circle cx="500" cy="500" r="500" />
+          <circle cx="500" cy="500" r="570" />
+          <circle cx="500" cy="500" r="650" />
+        </g>
+
+        <g class="ring-layer ring-outer">
+          <text class="ring-text outer-text" data-index="0">
+            <textPath href="#outer1" startOffset="6%">
+              the dream repeats itself endlessly · time returns again and again · the dream repeats itself endlessly · time returns again and again ·
+            </textPath>
+          </text>
+        </g>
+
+        <g class="ring-layer ring-outer-two">
+          <text class="ring-text outer-text faint" data-index="1">
+            <textPath href="#outer2" startOffset="18%">
+              illusion returns again · a dream inside another dream · illusion returns again · a dream inside another dream ·
+            </textPath>
+          </text>
+        </g>
+
+        <g class="ring-layer ring-outer-three">
+          <text class="ring-text outer-text super-faint" data-index="2">
+            <textPath href="#outer3" startOffset="42%">
+              the same circle opens and closes · the same circle opens and closes · the same circle opens and closes ·
+            </textPath>
+          </text>
+        </g>
+
+        <g class="ring-layer ring-one">
+          <text class="ring-text text-one" data-index="0">
+            <textPath href="#ring1" startOffset="0%">
+              For what had happened many centuries before was repeating itself, repeating itself endlessly, repeating itself beyond memory, repeating itself until nothing remained but the echo of what had already been.
+            </textPath>
+          </text>
+        </g>
+
+        <g class="ring-layer ring-two">
+          <text class="ring-text text-two" data-index="1">
+            <textPath href="#ring2" startOffset="6%">
+              With relief, with humiliation, with terror, he understood that he also was an illusion, that someone else was dreaming him, that he existed only as a fragment of another mind.
+            </textPath>
+          </text>
+        </g>
+
+        <g class="ring-layer ring-three">
+          <text class="ring-text text-three" data-index="2">
+            <textPath href="#ring3" startOffset="12%">
+              All this had already happened, all this had already happened, all this had already happened, as if the same circle kept closing and opening again without end.
+            </textPath>
+          </text>
+        </g>
+
+        <g class="ring-layer ring-four">
+          <text class="ring-text text-four" data-index="3">
+            <textPath href="#ring4" startOffset="18%">
+              A dream inside another dream, inside another dream, inside another dream, where each layer dissolves into the next and nothing is certain.
+            </textPath>
+          </text>
+        </g>
+
+        <g class="ring-layer ring-five">
+          <text class="ring-text text-five" data-index="4">
+            <textPath href="#ring5" startOffset="0%">
+              The same moment returns in another form, the same moment returns again and again, the same moment returns in another form.
+            </textPath>
+          </text>
+        </g>
+
+        <g class="ring-layer ring-six">
+          <text class="ring-text text-six" data-index="5">
+            <textPath href="#ring6" startOffset="0%">
+              repeating · dreaming · illusion · returning · repeating · dreaming · illusion · returning ·
+            </textPath>
+          </text>
+        </g>
+      </svg>
+
+      <div class="side-orbits" aria-hidden="true">
+        <div class="side-orbit left">
+          <span></span><span></span><span></span>
+        </div>
+
+        <div class="side-orbit right">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <button class="time-core" type="button" aria-label="Reveal next sentence">
+        <span class="core-number">1940</span>
+      </button>
+
+      <canvas id="page"></canvas>
+
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
